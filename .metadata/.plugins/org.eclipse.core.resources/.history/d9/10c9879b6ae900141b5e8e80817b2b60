@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package org.game.engine;
+
+/**
+ * @author Gautam S Verma
+ * Apr 22, 2015
+ * 11:40:50 PM
+ * This code is intellectual poperty of Gautam S Verma, 
+ * Re-use or reprodution of this code in any form is highly recomended :P .
+ */
+public class GameApplication {
+
+}
