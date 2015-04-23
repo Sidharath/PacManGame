@@ -57,7 +57,7 @@ public class PackMan extends Game{
 	@Override
 	public void update() {
 		frame++; 
-		if(frame > 2){
+		if(frame > 5){
 			frame = 0;
 		}
 		switch (dir) {
@@ -90,7 +90,8 @@ public class PackMan extends Game{
 	
 	@Override
 	public void draw(Graphics2D g) {
-		g.drawImage(packman.getSubimage(frame*30, (dir-37)*30, 28, 28), x, y, null);
+		g.drawImage(packman.getSubimage((frame/2)*30, (dir-37)*30, 28, 28), x, y, null);
+		
 		
 		
 	

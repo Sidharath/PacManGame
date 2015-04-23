@@ -1,4 +1,4 @@
-*.metadata
+.metadata
 RemoteSystemsTempFiles/*
-*.git
-*.gitignore
+.git
+.gitignore
