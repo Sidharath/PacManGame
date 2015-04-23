@@ -24,7 +24,7 @@ public abstract class Game implements KeyListener, MouseListener, MouseMotionLis
     protected boolean over;
     protected String title = "My Game";
     protected int width=400, height=300;
-    protected int delay = 120;
+    protected int delay = 100;
 
     public void init() {}
     abstract public void update();
