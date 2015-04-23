@@ -41,7 +41,8 @@ public abstract class Game implements KeyListener, MouseListener, MouseMotionLis
     public void keyTyped(KeyEvent e) {
     }
 
-    
+    public void keyPressed(KeyEvent e) {
+    }
     public void KeyPressed(KeyEvent e) {
 		
 	}

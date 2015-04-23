@@ -22,7 +22,6 @@ import org.game.engine.GameApplication;
  * Re-use or reproduction of this code in any form is highly recommended :P .
  */
 public class PackMan extends Game{
-	private static final int STEP = 2;
 	BufferedImage packman; 
 	int frame;
 	int dir; // we need to track the direction of the pacman
@@ -33,15 +32,11 @@ public class PackMan extends Game{
 		
 	}
 	
-//	@Override
-//	public void KeyPressed(KeyEvent e){
-//		
-//	}
 
 	public PackMan(){
 		title = "GSV PackMAn";
 		frame =0;
-		dir = KeyEvent.VK_RIGHT; // that signifies that pacman is going to the left direction
+		dir = KeyEvent.VK_LEFT; // that signifies that pacman is going to the left direction
 		x = 300;
 		y = 200;
 		
@@ -60,50 +55,15 @@ public class PackMan extends Game{
 		if(frame > 2){
 			frame = 0;
 		}
-		switch (dir) {
-		case KeyEvent.VK_LEFT: //37
-			x -= STEP;
-			break;
-		case KeyEvent.VK_RIGHT:  // 39
-			x += STEP;
-			break;
-		case KeyEvent.VK_UP:  //38
-			y -= STEP;
-			break;
-		case KeyEvent.VK_DOWN: // 40
-			y += STEP;
-			break;
-
-		}
-		// limit the moment area
-		if (x < 0){
-			x = 0;
-		} else if(x >  width-28-STEP ){
-			x = width-28-STEP;
-		}
-		if (y < 0){
-			y = 0;
-		} else if(y >  height-28-STEP ){
-			y = height-28-STEP;
-		}
 	}
 	
 	@Override
 	public void draw(Graphics2D g) {
-		g.drawImage(packman.getSubimage(frame*30, (dir-37)*30, 28, 28), x, y, null);
+		g.drawImage(packman.getSubimage(frame*30, 0, 28, 28), 100, 100, null);
 		
 		
 	
 	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		dir = e.getKeyCode();
-		
-	}
-
-	
-	}
 	
 
-
+}

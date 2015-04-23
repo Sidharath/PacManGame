@@ -75,16 +75,10 @@ public class PackMan extends Game{
 			break;
 
 		}
-		// limit the moment area
 		if (x < 0){
 			x = 0;
 		} else if(x >  width-28-STEP ){
 			x = width-28-STEP;
-		}
-		if (y < 0){
-			y = 0;
-		} else if(y >  height-28-STEP ){
-			y = height-28-STEP;
 		}
 	}
 	

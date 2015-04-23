@@ -24,7 +24,7 @@ public abstract class Game implements KeyListener, MouseListener, MouseMotionLis
     protected boolean over;
     protected String title = "My Game";
     protected int width=400, height=300;
-    protected int delay = 30;
+    protected int delay = 50;
 
     public void init() {}
     abstract public void update();
@@ -41,10 +41,8 @@ public abstract class Game implements KeyListener, MouseListener, MouseMotionLis
     public void keyTyped(KeyEvent e) {
     }
 
-    
-    public void KeyPressed(KeyEvent e) {
-		
-	}
+    public void keyPressed(KeyEvent e) {
+    }
 
     public void keyReleased(KeyEvent e) {
     }
@@ -72,7 +70,5 @@ public abstract class Game implements KeyListener, MouseListener, MouseMotionLis
 
     public void mouseWheelMoved(MouseWheelEvent e) {
     }
-	
-	
 
 }
