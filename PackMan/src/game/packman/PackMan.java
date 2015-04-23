@@ -33,10 +33,7 @@ public class PackMan extends Game{
 		
 	}
 	
-//	@Override
-//	public void KeyPressed(KeyEvent e){
-//		
-//	}
+
 
 	public PackMan(){
 		title = "GSV PackMAn";
