@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package game.packman;
+
+import java.awt.Graphics;
+
+import org.game.engine.Game;
+
+/**
+ * @author Gautam S Verma
+ * Apr 23, 2015
+ * 1:01:21 AM
+ * This code is Intellectual Property of Gautam S Verma, 
+ * Re-use or reproduction of this code in any form is highly recommended :P .
+ */
+public class PackMan extends Game{
+
+	
+
+	@Override
+	public void update() {
+	
+	}
+	
+	@Override
+	public void draw(Graphics g) {
+	
+	}
+	
+
+}
