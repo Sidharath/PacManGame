@@ -27,12 +27,12 @@ public class PackMan extends Game{
 	int frame;
 	int dir; // we need to track the direction of the pacman
 	int x,y; // we need to track the location of the pacman
-	
+
 	public static void main(String[] args){
 		GameApplication.start(new PackMan());
-		
+
 	}
-	
+
 
 
 	public PackMan(){
@@ -41,12 +41,12 @@ public class PackMan extends Game{
 		dir = KeyEvent.VK_RIGHT; // that signifies that pacman is going to the left direction
 		x = 300;
 		y = 200;
-		
-//		width = height = 400;
+
+		//		width = height = 400;
 		try {
 			packman = ImageIO.read(new File("images/packman.png"));
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -84,24 +84,24 @@ public class PackMan extends Game{
 			y = height-28-STEP;
 		}
 	}
-	
+
 	@Override
 	public void draw(Graphics2D g) {
 		g.drawImage(packman.getSubimage((frame/2)*30, (dir-37)*30, 28, 28), x, y, null);
-		
-		
-		
-	
+
+
+
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		dir = e.getKeyCode();
-		
+
 	}
 
-	
-	}
-	
+
+}
+
 
 
