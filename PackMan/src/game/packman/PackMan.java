@@ -97,18 +97,23 @@ public class PackMan extends Game{
 		if(frame > 5){
 			frame = 0;
 		}
+		// current position of the packman is (row, column)
 		switch (dir) {
 		case KeyEvent.VK_LEFT: //37
-			column -= STEP;
+			if (column > 0 && charAt(row,column-1) != '0')
+			column -= 1;
 			break;
 		case KeyEvent.VK_RIGHT:  // 39
-			column += STEP;
+			if (column < columns-1 && charAt(row,column+1) != '0')
+			column += 1;
 			break;
 		case KeyEvent.VK_UP:  //38
-			row -= STEP;
+			if (row > 0 && charAt(row-1,column) != '0')
+			row -= 1;
 			break;
 		case KeyEvent.VK_DOWN: // 40
-			row += STEP;
+			if (column < rows-1 && charAt(row+1,column) != '0')
+			row += 1;
 			break;
 
 		}
@@ -125,9 +130,21 @@ public class PackMan extends Game{
 //		}
 	}
 
+	/**
+	 * @param row
+	 * @param column
+	 * @return
+	 */
+	private char charAt(int row, int column) {
+		
+		return lines.get(row).charAt(column);
+	}
+
+
+
 	@Override
 	public void draw(Graphics2D g) {
-		g.drawImage(packman.getSubimage((frame/2)*30, (dir-37)*30, 28, 28), column, row, null);
+		g.drawImage(packman.getSubimage((frame/2)*30, (dir-37)*30, 28, 28), column*STEP-14, row*STEP-14, null);
 
 
 
