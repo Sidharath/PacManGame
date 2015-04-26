@@ -29,7 +29,9 @@ public class PackMan extends Game{
 	BufferedImage packman; 
 	int frame;
 	int dir; // we need to track the direction of the pacman
-	int x,y; // we need to track the location of the pacman
+	int column,row; // we need to track the location of the pacman
+	
+	int columns, rows;
 	
 	ArrayList<String> lines = new ArrayList<String>(); // for the lines
 	
@@ -47,10 +49,26 @@ public class PackMan extends Game{
 		
 		try {
 			Scanner s = new Scanner(new File("maze.txt"));
+			int r = 0;
+			
 			while(s.hasNextLine()){
-				lines.add(s.nextLine());
+				String line = s.nextLine();
+				lines.add(line);
+				if(line.contains("5")){
+					row = r;
+					column = line.indexOf('5');
+				}
+				r++;
+				
 			}
 			s.close();
+			rows = lines.size();
+			columns = lines.get(0).length(); // to get the length of the string
+			
+			width = columns*STEP;
+			height = rows*STEP;
+			
+			
 		} catch (FileNotFoundException e1) {
 			
 			e1.printStackTrace();
@@ -62,8 +80,7 @@ public class PackMan extends Game{
 		title = "GSV PackMAn";
 		frame =0;
 		dir = KeyEvent.VK_RIGHT; // that signifies that pacman is going to the left direction
-		x = 300;
-		y = 200;
+		
 
 		//		width = height = 400;
 		try {
@@ -82,35 +99,35 @@ public class PackMan extends Game{
 		}
 		switch (dir) {
 		case KeyEvent.VK_LEFT: //37
-			x -= STEP;
+			column -= STEP;
 			break;
 		case KeyEvent.VK_RIGHT:  // 39
-			x += STEP;
+			column += STEP;
 			break;
 		case KeyEvent.VK_UP:  //38
-			y -= STEP;
+			row -= STEP;
 			break;
 		case KeyEvent.VK_DOWN: // 40
-			y += STEP;
+			row += STEP;
 			break;
 
 		}
 		// limit the moment area
-		if (x < 0){
-			x = 0;
-		} else if(x >  width-28-STEP ){
-			x = width-28-STEP;
-		}
-		if (y < 0){
-			y = 0;
-		} else if(y >  height-28-STEP ){
-			y = height-28-STEP;
-		}
+//		if (column < 0){
+//			column = 0;
+//		} else if(column >  width-28-STEP ){
+//			column = width-28-STEP;
+//		}
+//		if (row < 0){
+//			row = 0;
+//		} else if(row >  height-28-STEP ){
+//			row = height-28-STEP;
+//		}
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.drawImage(packman.getSubimage((frame/2)*30, (dir-37)*30, 28, 28), x, y, null);
+		g.drawImage(packman.getSubimage((frame/2)*30, (dir-37)*30, 28, 28), column, row, null);
 
 
 
@@ -119,7 +136,10 @@ public class PackMan extends Game{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		dir = e.getKeyCode();
+		int key = e.getKeyCode();
+		if(37 <= key && key <= 40){
+			dir =key;
+		}
 
 	}
 
