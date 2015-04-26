@@ -32,6 +32,8 @@ public class PackMan extends Game {
 	int columns, rows;
 
 	ArrayList<String> lines = new ArrayList<String>(); // for the lines
+	BufferedImage[] mazeImages = new BufferedImage[4]; 
+	int mazeNo = 0;
 
 	public static void main(String[] args) {
 		GameApplication.start(new PackMan());
@@ -77,6 +79,9 @@ public class PackMan extends Game {
 		// width = height = 400;
 		try {
 			packman = ImageIO.read(new File("images/packman.png"));
+			for(int m=0; m<4;m++){
+				mazeImages[m] = ImageIO.read(new File("images/"+m+m+".png"));
+			}
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -132,18 +137,7 @@ public class PackMan extends Game {
 			}
 			return FAIL;
 		}
-		// limit the moment area
-		//		if (column < 0){
-		//			column = 0;
-		//		} else if(column >  width-28-STEP ){
-		//			column = width-28-STEP;
-		//		}
-		//		if (row < 0){
-		//			row = 0;
-		//		} else if(row >  height-28-STEP ){
-		//			row = height-28-STEP;
-		//		}
-	
+
 
 	/**
 	 * @param row
@@ -157,6 +151,7 @@ public class PackMan extends Game {
 
 	@Override
 	public void draw(Graphics2D g) {
+		g.drawImage(mazeImages[mazeNo],0,0, null);
 		for (int r = 0; r < rows; r++) {
 			for (int c = 0; c < columns; c++) {
 				if (charAt(r, c) != '0') {
