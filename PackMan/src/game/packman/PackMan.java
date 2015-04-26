@@ -7,7 +7,10 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
@@ -27,6 +30,9 @@ public class PackMan extends Game{
 	int frame;
 	int dir; // we need to track the direction of the pacman
 	int x,y; // we need to track the location of the pacman
+	
+	ArrayList<String> lines = new ArrayList<String>(); // for the lines
+	
 
 	public static void main(String[] args){
 		GameApplication.start(new PackMan());
@@ -36,6 +42,23 @@ public class PackMan extends Game{
 
 
 	public PackMan(){
+		
+		// load the lines
+		
+		try {
+			Scanner s = new Scanner(new File("maze.txt"));
+			while(s.hasNextLine()){
+				lines.add(s.nextLine());
+			}
+			s.close();
+		} catch (FileNotFoundException e1) {
+			
+			e1.printStackTrace();
+			System.out.println("maze file noe able to open");
+		}
+		
+		
+		
 		title = "GSV PackMAn";
 		frame =0;
 		dir = KeyEvent.VK_RIGHT; // that signifies that pacman is going to the left direction
